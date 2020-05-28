@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Input, Button, Row, Col } from 'antd'
-import { createBrowserHistory } from 'history'; // 如果是history路由
+// import { createBrowserHistory } from 'history'; // 如果是history路由
 // import QueueAnim from 'rc-queue-anim';
 // import { connect } from 'react-redux'
 // import { hashHistory/* , Link */ } from 'react-router'
@@ -33,9 +33,8 @@ export default class Login extends Component {
   render() {
     const onFinish = values => {
       sessionStorage.setItem('token', JSON.stringify(values))
-      console.log(this.props)
-      const history = createBrowserHistory()
-      history.push('/')
+      // console.log(this.context.router,'this.context.router')
+      window.location.href = '/'
     };
   
     const onFinishFailed = errorInfo => {
