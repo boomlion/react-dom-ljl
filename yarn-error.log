@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add react-scripts -s
+  /usr/local/bin/node /usr/local/bin/yarn add react-for-echarts -S
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: EACCES: permission denied, mkdir '/Users/base/react-dom-ljl/node_modules/@svgr/babel-plugin-add-jsx-attribute'
+  Error: EACCES: permission denied, mkdir '/Users/base/react-dom-ljl/node_modules/@babel/helper-compilation-targets/node_modules/debug'
 
 npm manifest: 
   {
@@ -93,6 +93,17 @@ Lockfile:
     version "4.0.2"
     resolved "https://registry.npm.taobao.org/@ant-design/icons/download/@ant-design/icons-4.0.2.tgz?cache=0&sync_timestamp=1582987548342&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40ant-design%2Ficons%2Fdownload%2F%40ant-design%2Ficons-4.0.2.tgz#6fce64b3e207d99d1e258ff527674e22b9b2afc0"
     integrity sha1-b85ks+IH2Z0eJY/1J2dOIrmyr8A=
+    dependencies:
+      "@ant-design/colors" "^3.1.0"
+      "@ant-design/icons-svg" "^4.0.0"
+      classnames "^2.2.6"
+      insert-css "^2.0.0"
+      rc-util "^4.9.0"
+  
+  "@ant-design/icons@^4.1.0":
+    version "4.1.0"
+    resolved "https://registry.npm.taobao.org/@ant-design/icons/download/@ant-design/icons-4.1.0.tgz#444edcc3822d5b43b2b038d6f893cd7f7dfcc48d"
+    integrity sha1-RE7cw4ItW0OysDjW+JPNf338xI0=
     dependencies:
       "@ant-design/colors" "^3.1.0"
       "@ant-design/icons-svg" "^4.0.0"

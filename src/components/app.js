@@ -1,13 +1,12 @@
 import React, {Component}from "react";
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { hashHistory/* , Link  */ } from 'react-router'
-import {
-  DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
-  SwapRightOutlined
+import{
+
+PieChartOutlined,
+SwapRightOutlined,
+TeamOutlined,
+FormOutlined
 } from '@ant-design/icons';
 import "../styles/app.scss"
 const { Header, Content, Sider } = Layout
@@ -25,22 +24,31 @@ export default class App extends Component {
     super(props)
     this.state = {
       collapsed: false,
+      defaultSelectedKeys: [],
       menu:[
-        {id:10063,resName:"概览",resKey:"desk$/index",resIcon:"pgmb"},
-        {id:600110233,resName:"图表",resKey:"echarts",resIcon:"statistics"},
-        {id:100631,resName:"编辑器",resKey:"editor",resIcon:"duty"},
-        {id:10062,resName:"设置中心",children:
-          [{id:10108,resName:"用户管理",resKey:"set$/userManage",resIcon:"userManage"},{id:10109,resName:"角色管理",resKey:"set$/roleManage",resIcon:"roleManage"},{id:10110,resName:"权限管理",resKey:"set$/moduleManage",resIcon:"moduleManage"}],resKey:"set$",resIcon:"xtxg"}
+        {id:10063,resName:"概览",resKey:"/",resIcon:"pgmb"},
+        {id:600110233,resName:"图表",resKey:"/form",resIcon:"statistics"},
+        // {id:100631,resName:"编辑器",resKey:"editor",resIcon:"duty"},
+        // {id:10062,resName:"设置中心",children:
+        //   [{id:10108,resName:"用户管理",resKey:"set$/userManage",resIcon:"userManage"},{id:10109,resName:"角色管理",resKey:"set$/roleManage",resIcon:"roleManage"},{id:10110,resName:"权限管理",resKey:"set$/moduleManage",resIcon:"moduleManage"}],resKey:"set$",resIcon:"xtxg"}
       ]
     }
   }
+  
+  componentWillMount() {
+    this.setState({ defaultSelectedKeys: [hashHistory.getCurrentLocation().pathname] })
+  }
+  
   // 菜单点击事件
 _handleClick = (e) => {
     // this.props.dispatch(clearGformCache2({}))
-    hashHistory.push(`/${e.key}`)
+    // 当路由相同的时候，进行识别，不跳转，以免pash失败的
+    if (hashHistory.getCurrentLocation().pathname !== e.key) {
+      hashHistory.push(`${e.key}`)
+    }
   }
   onCollapse = collapsed => {
-    this.setState({ collapsed });
+    this.setState({ collapsed })
   };
  render() {
   const { collapsed } = this.state
@@ -49,13 +57,13 @@ _handleClick = (e) => {
           <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
             <div className="logo" />
             <SwapRightOutlined />
-            <Menu theme="dark"  defaultSelectedKeys={['1']} onClick={this._handleClick} mode="inline">
+            <Menu theme="dark"  defaultSelectedKeys={this.state.defaultSelectedKeys} onClick={this._handleClick} mode="inline">
              {this.state.menu.map(item => (
               item.children ? (
               <SubMenu key={item.resKey} icon={<TeamOutlined />} title={item.resName}>
                 {item.children.map(chir => (
                 <Menu.Item key={chir.resKey}>
-                  {item.resName}
+                   {item.resName}<FormOutlined />
                 </Menu.Item>))}
               </SubMenu>) 
               : 
@@ -68,11 +76,11 @@ _handleClick = (e) => {
           <Layout className="site-layout">
             <Header className="site-layout-background" style={{ padding: 0 }} />
             <Content style={{ margin: '0 16px' }}>
-              <Breadcrumb style={{ margin: '16px 0' }}>
+              {/* <Breadcrumb style={{ margin: '16px 0' }}>
                 <Breadcrumb.Item>User</Breadcrumb.Item>
                 <Breadcrumb.Item>Bill</Breadcrumb.Item>
-              </Breadcrumb>
-              <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+              </Breadcrumb> */}
+              <div className="site-layout-background" style={{ padding: 24, minHeight: 360, marginTop: '20px' }}>
               { this.props.children }
               </div>
             </Content>

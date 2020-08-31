@@ -1,0 +1,18 @@
+.dashbord{
+  /* background-color: red; */
+}
+.box{
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+  padding: 20px 0 20px 0;
+}
+.item{
+  text-align: center;
+}
+.font{
+  font-size: 20px;
+  color: #1890ff;
+  line-height: 30px;
+  margin-top: 20px;
+}
