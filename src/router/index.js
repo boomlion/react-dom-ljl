@@ -6,7 +6,7 @@ import Notfound from "../components/404"
 import Login from "../components/login"
 import App from "../components/app"
 import Dashbord from '../pages/dashbord'
-import Form from '../pages/form'
+import Form from '../pages/form/index'
 export default () => (
   <Router history={hashHistory}>
       <Route path="/" component={App}>
